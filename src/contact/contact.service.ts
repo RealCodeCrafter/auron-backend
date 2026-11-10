@@ -44,7 +44,7 @@ export class ContactService {
     const safe = (value?: string) => value?.trim() || '—';
 
     const mailOptions: nodemailer.SendMailOptions = {
-      from: `"Auron Website" <${process.env.SMTP_USER}>`,
+      from: `"Auron Website" <${process.env.CONTACT_EMAIL || 'info@auronlub.com'}>`,
       to: process.env.CONTACT_EMAIL || 'info@auronlub.com',
       replyTo: data.email || undefined,
       subject: 'Auron – Новое сообщение с сайта',
