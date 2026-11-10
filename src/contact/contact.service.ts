@@ -4,7 +4,6 @@ import * as nodemailer from 'nodemailer';
 type ContactEmailData = {
   name: string;
   phone: string;
-  email?: string;
   message: string;
 };
 
@@ -46,12 +45,10 @@ export class ContactService {
     const mailOptions: nodemailer.SendMailOptions = {
       from: `"Auron Website" <${process.env.CONTACT_EMAIL || 'info@auronlub.com'}>`,
       to: process.env.CONTACT_EMAIL || 'info@auronlub.com',
-      replyTo: data.email || undefined,
       subject: 'Auron – Новое сообщение с сайта',
       html: `
         <h2>📩 Новое сообщение с сайта Auron</h2>
         <p><strong>ФИО:</strong> ${safe(data.name)}</p>
-        <p><strong>Email:</strong> ${safe(data.email)}</p>
         <p><strong>Телефон:</strong> ${safe(data.phone)}</p>
         <p><strong>Сообщение:</strong></p>
         <div style="background:#f4f6f8;padding:15px;border-left:4px solid #e8b923;">
@@ -72,7 +69,7 @@ export class ContactService {
         const info = await transporter.sendMail(mailOptions);
 
         this.logger.log(
-          `Contact email muvaffaqiyatli yuborildi | to=${process.env.CONTACT_EMAIL || 'info@auronlub.com'} | messageId=${info.messageId ?? '—'} | name=${safe(data.name)} | phone=${safe(data.phone)} | replyTo=${safe(data.email)}`,
+          `Contact email muvaffaqiyatli yuborildi | to=${process.env.CONTACT_EMAIL || 'info@auronlub.com'} | messageId=${info.messageId ?? '—'} | name=${safe(data.name)} | phone=${safe(data.phone)}`,
         );
 
         transporter.close();
