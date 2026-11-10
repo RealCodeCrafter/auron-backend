@@ -28,7 +28,6 @@ async function bootstrap() {
 
   const config = app.get(ConfigService);
 
-  app.setGlobalPrefix('api');
   app.disable('x-powered-by');
 
   app.use(
@@ -42,7 +41,7 @@ async function bootstrap() {
       filter: (req, res) => {
         if (
           req.path.startsWith('/uploads') ||
-          req.path.startsWith('/api/upload/file/')
+          req.path.startsWith('/upload/file/')
         ) {
           return false;
         }
@@ -82,8 +81,6 @@ async function bootstrap() {
 
   const port = config.get<number>('PORT', 10006);
   await app.listen(port);
-
-  console.log(`Auron API: ${config.get('APP_URL', `http://localhost:${port}`)}/api`);
 }
 
 bootstrap();

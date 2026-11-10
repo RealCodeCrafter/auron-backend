@@ -18,24 +18,24 @@ Yoki `install.bat`.
 
 PostgreSQL da `database/init.sql` ni ishga tushiring, keyin `superadmin` jadvaliga bcrypt hash bilan login yozing.
 
-## API
+Postman: `postman/Auron.postman_collection.json` va `postman/Auron.postman_environment.json`
 
-Global prefix: `/api`
+## Endpointlar
 
 | Method | Path | Auth |
 | --- | --- | --- |
-| POST | `/api/auth/login` | yo‘q |
-| PATCH | `/api/auth/update` | superadmin |
-| GET | `/api/categories` | yo‘q |
-| GET | `/api/categories/:id` | yo‘q |
-| POST / PATCH / DELETE | `/api/categories` | token |
-| GET | `/api/products?categoryId=` | yo‘q |
-| GET | `/api/products/search?name=` | yo‘q |
-| GET | `/api/products/:id` | yo‘q |
-| POST / PATCH / DELETE | `/api/products` | token |
-| POST | `/api/contact` | yo‘q → `info@auronlub.com` |
-| GET / POST / DELETE | `/api/upload` | token |
-| GET | `/api/upload/file/:filename` | yo‘q |
+| POST | `/auth/login` | yo‘q |
+| PATCH | `/auth/update` | superadmin |
+| GET | `/categories` | yo‘q |
+| GET | `/categories/:id` | yo‘q |
+| POST / PATCH / DELETE | `/categories` | token |
+| GET | `/products?categoryId=` | yo‘q |
+| GET | `/products/search?name=` | yo‘q |
+| GET | `/products/:id` | yo‘q |
+| POST / PATCH / DELETE | `/products` | token |
+| POST | `/contact` | yo‘q → `info@auronlub.com` |
+| GET / POST / DELETE | `/upload` | token |
+| GET | `/upload/file/:filename` | yo‘q |
 
 Rasmlar `uploads/category`, `uploads/product`, `uploads/files` ga tushadi. Update/delete da eski fayl o‘chadi.
 

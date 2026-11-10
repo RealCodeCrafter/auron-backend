@@ -37,7 +37,7 @@ export class FileStorageService {
   }
 
   getDocumentStreamUrl(filename: string): string {
-    return `${this.imageUrlService.getBaseUrl()}/api/upload/file/${filename}`;
+    return `${this.imageUrlService.getBaseUrl()}/upload/file/${filename}`;
   }
 
   listDocumentFiles() {
